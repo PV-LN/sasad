@@ -3,6 +3,7 @@ from flask import render_template, jsonify, request
 from nlu_functions.intent_handler import *
 from nlu_functions.intent import intent_mapper, intents,stopwords
 import webbrowser
+from flask_frozen import Freezer
 
 # from nltk.corpus import stopwords
 
@@ -58,5 +59,7 @@ def chat():
 
 
 app.config["DEBUG"] = True
+freezer = Freezer(app)
 if __name__ == "__main__":
     app.run(port=8000, debug=True)
+    freezer.freeze()
